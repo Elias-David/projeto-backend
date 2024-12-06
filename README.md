@@ -1,145 +1,130 @@
-# Digital Store - Projeto de Back-End
+# E-commerce Backend API
 
-## Introdução
+Backend de uma aplicação e-commerce desenvolvida como projeto do curso Geração Tech. A API fornece endpoints para gerenciamento de usuários, categorias e produtos, com autenticação JWT.
 
-Bem-vindos ao projeto de Back-End! Este projeto foi desenvolvido como parte do curso de Desenvolvimento Web, com foco na criação de uma API robusta e segura para gerenciar uma aplicação de e-commerce. A base deste trabalho foi a [documentação oficial do projeto](https://github.com/digitalcollegebr/projeto-backend).
+## Tecnologias Utilizadas
 
-## Escopo do Projeto
+- **Node.js** - Ambiente de execução JavaScript
+- **Express.js** - Framework web para criação de APIs
+- **MySQL** - Banco de dados relacional
+- **Sequelize** - ORM para MySQL
+- **JWT** - Autenticação e autorização
+- **bcrypt** - Criptografia de senhas
+- **Jest** - Framework de testes
+- **Dotenv** - Gerenciamento de variáveis de ambiente
+- **Nodemon** - Ferramenta de desenvolvimento
 
-A implementação deste projeto utilizou as seguintes tecnologias:
+## Estrutura do Projeto
 
-- **Node.js** para execução de JavaScript no servidor.
-- **Express.js** para criação das rotas de API.
-- **Dotenv** para gerenciar configurações com segurança.
-- **Nodemon** para produtividade no desenvolvimento.
-- **MySQL** para persistência de dados.
-- **Sequelize** para abstração e gerenciamento do banco de dados.
-- **JWT** para autenticação e segurança nas rotas de API.
-- **JEST** para testes automatizados e garantia de qualidade do código.
-
-## Estrutura de Diretórios
-
-```plaintext
+```
 project-root/
 ├── src/
-│   ├── config/          # Configurações da aplicação
-│   ├── controllers/     # Lógica de controle
-│   ├── middleware/      # Middlewares para segurança e validações
-│   ├── models/          # Definição do banco de dados (ORM)
-│   ├── routes/          # Rotas da API
-│   ├── services/        # Regras de negócio
-│   ├── app.js           # Inicialização da aplicação
-│   └── server.js        # Servidor
-├── tests/               # Testes automatizados
-├── .env                 # Variáveis de ambiente
-├── .gitignore           # Arquivos ignorados pelo Git
-└── package.json         # Dependências e scripts do projeto
+│   ├── config/      # Configurações do projeto
+│   ├── controllers/ # Controladores da aplicação
+│   ├── middleware/  # Middlewares customizados
+│   ├── models/      # Modelos do Sequelize
+│   ├── routes/      # Rotas da API
+│   ├── services/    # Camada de serviços
+│   ├── app.js       # Configuração do Express
+│   └── server.js    # Entrada da aplicação
+├── tests/           # Testes automatizados
+├── .env            # Variáveis de ambiente
+├── .gitignore
+└── package.json
 ```
 
-## Response Status Codes
+## Modelagem do Banco de Dados
 
-A API utiliza os seguintes status codes para respostas HTTP:
+![Modelagem do Banco de Dados](bd_model.jpg)
 
-- **200 OK**: Ação realizada com sucesso.
-- **201 CREATED**: Recurso criado com sucesso.
-- **204 NO CONTENT**: Requisição bem-sucedida, mas sem conteúdo de retorno.
-- **400 BAD REQUEST**: Erro nos dados enviados pelo cliente.
-- **401 UNAUTHORIZED**: Falta de autenticação válida.
-- **404 NOT FOUND**: Recurso não encontrado.
+A imagem acima representa o Diagrama de Entidade-Relacionamento (DER) do projeto, ilustrando as tabelas e seus relacionamentos:
 
-## Funcionalidades Principais
+- **Users**: Armazena informações dos usuários
+- **Categories**: Gerencia as categorias dos produtos
+- **Products**: Contém os dados dos produtos
+- **Product_Images**: Armazena as imagens dos produtos
+- **Product_Options**: Mantém as opções/variações dos produtos
+- **Product_Categories**: Tabela pivot para relacionamento many-to-many entre produtos e categorias
 
-### Banco de Dados
+## Instalação
 
-- Modelagem eficiente utilizando o Sequelize.
-- Tabelas principais:
-  - **Usuários**: Cadastro, autenticação e gerenciamento.
-  - **Categorias**: Organização dos produtos por tipo.
-  - **Produtos**: Cadastro, edição e listagem de itens disponíveis.
-  - **Imagens**: Associação de imagens a produtos.
-  - **Opções de Produtos**: Variações como tamanho e cor.
-
-### Endpoints
-
-- **Usuários**:
-  - Cadastro de usuário.
-  - Autenticação via JWT.
-  - Atualização e exclusão de perfil.
-
-- **Categorias**:
-  - CRUD completo (Create, Read, Update, Delete).
-  - Filtros e paginação.
-
-- **Produtos**:
-  - CRUD completo com gerenciamento de imagens e opções.
-  - Filtros avançados como preço, categorias e opções.
-
-## Requisitos de Avaliação
-
-### Funcionalidades Essenciais
-
-- Implementação correta dos endpoints e CRUD completo.
-- Autenticação JWT em rotas sensíveis.
-- Tratamento de erros e respostas padronizadas.
-
-### Qualidade do Código
-
-- Código limpo e modular.
-- Organização seguindo boas práticas (MVC).
-- Testes automatizados com cobertura significativa.
-
-### Documentação
-
-- Descrição clara dos endpoints (Swagger ou Postman Collection).
-- Instruções para setup e uso da aplicação.
-
-## Como Rodar a Aplicação
-
-### Pré-requisitos
-
-- **Node.js** (versão 14 ou superior)
-- **npm** ou **yarn**
-- **MySQL**
-
-### Passos
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/digitalcollegebr/projeto-backend.git
-   cd projeto-backend
-   ```
-
+1. Clone o repositório
 2. Instale as dependências:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
+3. Configure as variáveis de ambiente no arquivo `.env`:
+```env
+DB_HOST=localhost
+DB_USER=seu_usuario
+DB_PASS=sua_senha
+DB_NAME=nome_do_banco
+DB_PORT=3306
+APP_KEY_TOKEN=sua_chave_secreta
+```
 
-3. Configure as variáveis de ambiente no arquivo `.env`.
+## Execução
 
-4. Rode as migrations e seeds:
-   ```bash
-   npx sequelize-cli db:migrate
-   npx sequelize-cli db:seed:all
-   ```
+Para desenvolvimento:
+```bash
+npm run dev
+```
 
-5. Inicie o servidor:
-   ```bash
-   npm run dev
-   ```
+Para produção:
+```bash
+npm start
+```
 
-6. Acesse `http://localhost:3000`.
+## Testes
 
-## Desenvolvedores
+Para executar os testes:
+```bash
+npm test
+```
 
-- **Elias David Oliveira Sousa**
-- **Ruth Siqueira Carvalho**
+## API Endpoints
 
-## Links Úteis
+### Usuários
 
-- [Documentação do Sequelize](https://sequelize.org/)
-- [Guia do Express.js](https://expressjs.com/)
-- [JWT (JSON Web Tokens)](https://jwt.io/)
+- `GET /v1/user/:id` - Retorna dados de um usuário
+- `POST /v1/user` - Cria novo usuário
+- `PUT /v1/user/:id` - Atualiza dados do usuário
+- `DELETE /v1/user/:id` - Remove usuário
+- `POST /v1/user/token` - Gera token JWT
 
----
+### Categorias
 
-Agradecemos pela oportunidade de desenvolver este projeto e esperamos que ele atenda às expectativas!
+- `GET /v1/category/search` - Lista categorias com filtros
+- `GET /v1/category/:id` - Retorna dados de uma categoria
+- `POST /v1/category` - Cria nova categoria
+- `PUT /v1/category/:id` - Atualiza categoria
+- `DELETE /v1/category/:id` - Remove categoria
+
+### Produtos
+
+- `GET /v1/product/search` - Lista produtos com filtros
+- `GET /v1/product/:id` - Retorna dados de um produto
+- `POST /v1/product` - Cria novo produto
+- `PUT /v1/product/:id` - Atualiza produto
+- `DELETE /v1/product/:id` - Remove produto
+
+## Autenticação
+
+A API utiliza autenticação JWT. Para rotas protegidas, inclua o token no header:
+```
+Authorization: Bearer <seu_token>
+```
+
+## Documentação Detalhada
+
+Para mais detalhes sobre os endpoints, incluindo payload, query params e responses, consulte a [documentação completa da API](link_para_documentacao).
+
+## Referências
+
+- [ORIENTAÇÕES PROJETO BACK-END](https://github.com/digitalcollegebr/projeto-backend)
+- [DOCUMENTAÇÃO EXTRA - NOTION](https://dust-starburst-c57.notion.site/Desenvolvimento-Back-End-JavaScript-5038d9fff41d45688f698f7d88a5a19e)
+
+## Autores
+
+- [Elias David](https://github.com/Elias-David)
+- [Ruth Siqueira](https://github.com/Ruth-sc)
