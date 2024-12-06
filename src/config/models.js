@@ -1,5 +1,4 @@
-const Sequelize = require('sequelize');
-const config = require('./database');
+const sequelize = require('./database');
 
 const User = require('../models/User');
 const Category = require('../models/Category');
@@ -8,7 +7,7 @@ const ProductImage = require('../models/ProductImage');
 const ProductOption = require('../models/ProductOption');
 const ProductCategory = require('../models/ProductCategory');
 
-const connection = new Sequelize(config);
+const connection = new sequelize();
 
 // Inicializa os models
 const models = [

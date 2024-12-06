@@ -63,24 +63,11 @@ DB_PORT=3306
 APP_KEY_TOKEN=sua_chave_secreta
 ```
 
-## Execução
-
-Para desenvolvimento:
-```bash
-npm run dev
-```
-
-Para produção:
-```bash
-npm start
-```
-
-## Testes
-
-Para executar os testes:
-```bash
-npm test
-```
+## Scripts Disponíveis
+- `npm start`: Inicia a aplicação em produção
+- `npm run dev`: Inicia a aplicação em desenvolvimento com Nodemon
+- `npm test`: Executa os testes unitários
+- `npm run test:coverage`: Executa os testes e gera relatório de cobertura
 
 ## API Endpoints
 

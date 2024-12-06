@@ -2,11 +2,14 @@ const ProductService = require('../../../src/services/ProductService');
 const Product = require('../../../src/models/Product');
 const ProductImage = require('../../../src/models/ProductImage');
 const ProductOption = require('../../../src/models/ProductOption');
+const Category = require('../../../src/models/Category');
+
 const { Op } = require('sequelize');
 
 jest.mock('../../../src/models/Product');
 jest.mock('../../../src/models/ProductImage');
 jest.mock('../../../src/models/ProductOption');
+jest.mock('../../../src/models/Category');
 
 describe('ProductService', () => {
   beforeEach(() => {
