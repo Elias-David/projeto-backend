@@ -12,11 +12,16 @@ const app = express();
 // Middleware para processar JSON
 app.use(express.json());
 
-// Registra as rotas
-app.use(authRoutes); // Rotas de autenticação
-app.use(userRoutes);
-app.use(categoryRoutes);
-app.use(productRoutes);
+// Rota de teste
+app.get('/test', (req, res) => {
+  res.json({ message: 'Test route working!' });
+});
+
+// Registra as rotas com prefixos específicos
+app.use('/v1/user', authRoutes);
+app.use('/v1/user', userRoutes);
+app.use('/v1/category', categoryRoutes);
+app.use('/v1/product', productRoutes);
 
 // Tratamento de erros
 app.use((err, req, res, next) => {

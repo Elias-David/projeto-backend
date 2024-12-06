@@ -1,7 +1,6 @@
-const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-const sequelize = new Sequelize({
+module.exports = {
   dialect: 'mysql',
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
@@ -12,6 +11,4 @@ const sequelize = new Sequelize({
     timestamps: true,
     underscored: true,
   }
-});
-
-module.exports = sequelize;
+};

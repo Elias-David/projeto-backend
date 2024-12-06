@@ -4,13 +4,13 @@ const ProductController = require('../controllers/ProductController');
 const authMiddleware = require('../middleware/auth');
 
 // Rotas públicas
-router.get('/v1/product/search', ProductController.search);
-router.get('/v1/product/:id', ProductController.show);
+router.get('/search', ProductController.search);
+router.get('/:id', ProductController.show);
 
 // Rotas protegidas
 router.use(authMiddleware);
-router.post('/v1/product', ProductController.store);
-router.put('/v1/product/:id', ProductController.update);
-router.delete('/v1/product/:id', ProductController.delete);
+router.post('/', ProductController.store);
+router.put('/:id', ProductController.update);
+router.delete('/:id', ProductController.delete);
 
 module.exports = router;

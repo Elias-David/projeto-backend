@@ -1,5 +1,4 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
 const bcrypt = require('bcrypt');
 
 class User extends Model {
@@ -39,7 +38,5 @@ class User extends Model {
     });
   }
 }
-
-User.init(sequelize);
 
 module.exports = User;
