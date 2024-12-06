@@ -46,32 +46,55 @@ A imagem acima representa o Diagrama de Entidade-Relacionamento (DER) do projeto
 - **Product_Options**: Mantém as opções/variações dos produtos
 - **Product_Categories**: Tabela pivot para relacionamento many-to-many entre produtos e categorias
 
-## Instalação
+## Instalação e Configuração
 
 1. Clone o repositório
 ```bash
 git clone https://github.com/Elias-David/projeto-backend.git
 ```
+
 2. Instale as dependências:
 ```bash
 npm install
 ```
-3. Configure as variáveis de ambiente no arquivo `.env`:
+
+3. Crie um banco de dados MySQL:
+```sql
+CREATE DATABASE ecommerce_db;
+```
+
+4. Configure as variáveis de ambiente:
+   - Copie o arquivo `.env.example` para `.env`
+   - Ajuste as variáveis conforme sua configuração local:
 ```env
 DB_HOST=localhost
 DB_USER=seu_usuario
 DB_PASS=sua_senha
-DB_NAME=nome_do_banco
+DB_NAME=ecommerce_db
 DB_PORT=3306
 APP_KEY_TOKEN=sua_chave_secreta
 ```
 
+5. Execute o script de setup do banco de dados:
+```bash
+npm run setup-db
+```
+Este comando irá:
+- Criar todas as tabelas necessárias
+- Inserir um usuário administrador (admin@example.com / admin123)
+- Criar categorias e produtos de exemplo
+
+6. Inicie o servidor:
+```bash
+npm run dev
+```
 
 ## Scripts Disponíveis
 - `npm start`: Inicia a aplicação em produção
 - `npm run dev`: Inicia a aplicação em desenvolvimento com Nodemon
 - `npm test`: Executa os testes unitários
 - `npm run test:coverage`: Executa os testes e gera relatório de cobertura
+- `npm run setup-db`: Configura o banco de dados com dados iniciais
 
 ## API Endpoints
 
@@ -104,6 +127,14 @@ APP_KEY_TOKEN=sua_chave_secreta
 A API utiliza autenticação JWT. Para rotas protegidas, inclua o token no header:
 ```
 Authorization: Bearer <seu_token>
+```
+
+Para obter um token, use o endpoint de autenticação com as credenciais do usuário admin criado durante o setup:
+```json
+{
+  "email": "admin@example.com",
+  "password": "admin123"
+}
 ```
 
 ## Documentação Detalhada da API
