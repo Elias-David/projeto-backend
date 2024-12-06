@@ -1,5 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
@@ -11,6 +13,9 @@ const app = express();
 
 // Middleware para processar JSON
 app.use(express.json());
+
+// Configuração do Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Rota de teste
 app.get('/test', (req, res) => {

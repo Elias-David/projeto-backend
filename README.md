@@ -148,6 +148,49 @@ A documentação completa da API, incluindo:
 
 Está disponível no arquivo [API.md](API.md).
 
+## Documentação Interativa com Swagger
+
+A API possui documentação interativa através do Swagger UI, permitindo explorar e testar todos os endpoints diretamente pelo navegador.
+
+### Como Acessar
+1. Inicie o servidor:
+```bash
+npm run dev
+```
+
+2. Acesse no navegador:
+```
+http://localhost:3000/api-docs
+```
+
+### Como Usar
+
+1. **Explorar Endpoints**:
+   - Os endpoints estão organizados por tags (Usuários, Categorias, Produtos)
+   - Clique em cada endpoint para ver detalhes dos parâmetros, respostas e exemplos
+   - Cada rota mostra os possíveis códigos de resposta e formatos de dados
+
+2. **Autenticação**:
+   - Gere um token usando POST `/v1/user/token`
+   - Clique no botão "Authorize" (ícone de cadeado) no topo da página
+   - Insira o token no formato: `Bearer seu_token_aqui`
+   - Agora você pode testar rotas protegidas
+
+3. **Testar Endpoints**:
+   - Clique no endpoint desejado
+   - Clique no botão "Try it out"
+   - Preencha os parâmetros necessários
+   - Clique em "Execute"
+   - Veja a resposta real da API
+
+4. **Exemplos de Uso**:
+   - A interface mostra exemplos de payloads para cada rota
+   - Os schemas de dados são completamente documentados
+   - Você pode ver os headers necessários para cada requisição
+   - As respostas incluem todos os possíveis status codes
+
+A documentação Swagger complementa a documentação estática fornecida em API.md, oferecendo uma forma interativa de explorar e testar a API.
+
 ## Testando a API com Insomnia
 
 Para facilitar os testes dos endpoints, disponibilizamos uma collection do Insomnia na raiz do projeto.
