@@ -49,6 +49,9 @@ A imagem acima representa o Diagrama de Entidade-Relacionamento (DER) do projeto
 ## Instalação
 
 1. Clone o repositório
+```bash
+git clone https://github.com/Elias-David/projeto-backend.git
+```
 2. Instale as dependências:
 ```bash
 npm install
@@ -62,6 +65,7 @@ DB_NAME=nome_do_banco
 DB_PORT=3306
 APP_KEY_TOKEN=sua_chave_secreta
 ```
+
 
 ## Scripts Disponíveis
 - `npm start`: Inicia a aplicação em produção
@@ -102,9 +106,36 @@ A API utiliza autenticação JWT. Para rotas protegidas, inclua o token no heade
 Authorization: Bearer <seu_token>
 ```
 
-## Documentação Detalhada
+## Documentação Detalhada da API
 
-Para mais detalhes sobre os endpoints, incluindo payload, query params e responses, consulte a [documentação completa da API](link_para_documentacao).
+A documentação completa da API, incluindo:
+- Descrição detalhada de todos os endpoints
+- Exemplos de requisição e resposta
+- Parâmetros aceitos
+- Códigos de status HTTP
+- Formatos de payload
+
+Está disponível no arquivo [API.md](API.md).
+
+## Testando a API com Insomnia
+
+Para facilitar os testes dos endpoints, disponibilizamos uma collection do Insomnia na raiz do projeto.
+
+### Como usar:
+1. Faça download do [Insomnia](https://insomnia.rest/download)
+2. No Insomnia, clique em `Create` e depois em `Import from File`
+3. Selecione o arquivo `insomnia_backend_project.json` da raiz do projeto
+4. A collection será importada com todos os endpoints organizados nas pastas:
+   - Auth: Autenticação e geração de token
+   - Users: Gerenciamento de usuários
+   - Categories: Gerenciamento de categorias
+   - Products: Gerenciamento de produtos
+
+Os endpoints já estão configurados com:
+- URLs corretas
+- Headers necessários
+- Exemplos de payload
+- Variáveis de ambiente para o token JWT
 
 ## Referências
 
